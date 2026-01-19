@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_key_pair" "devops_key" {
   key_name   = "devops-key"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("~/.ssh/id_ed25519.pub")
 }
 
 resource "aws_security_group" "devops_sg" {
@@ -40,9 +40,9 @@ resource "aws_security_group" "devops_sg" {
 }
 
 resource "aws_instance" "devops_ec2" {
-  ami           = "ami-0f5ee92e2d63afc18" # Amazon Linux 2 (ap-south-1)
-  instance_type = "t3.medium"
-  key_name      = aws_key_pair.devops_key.key_name
+  ami             = "ami-03f4878755434977f" # Ubuntu 22.04 LTS (ap-south-1)
+  instance_type   = var.instance_type
+  key_name        = var.key_name
   security_groups = [aws_security_group.devops_sg.name]
 
   tags = {
