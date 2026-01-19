@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Build Image') {
+      steps {
+        sh 'docker build -t python-k8s-app -f docker/Dockerfile .'
+      }
+    }
+
+    stage('Deploy to K8s') {
+      steps {
+        sh 'kubectl apply -f k8s/'
+      }
+    }
+  }
+}

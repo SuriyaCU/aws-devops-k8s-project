@@ -1,0 +1,19 @@
+- name: Install Docker
+  yum:
+    name: docker
+    state: present
+
+- name: Start Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Install Kubernetes tools
+  shell: |
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+    chmod +x kubectl
+    mv kubectl /usr/local/bin/
+
+- name: Disable swap
+  shell: swapoff -a
