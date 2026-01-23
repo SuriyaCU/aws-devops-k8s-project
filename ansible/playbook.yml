@@ -1,4 +1,0 @@
-- hosts: ec2
-  become: yes
-  roles:
-    - common
