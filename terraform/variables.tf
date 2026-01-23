@@ -1,16 +1,15 @@
-variable "region" {
-  description = "AWS region"
-  type        = string
-  default     = "ap-south-1"
+variable "aws_region" {
+  default = "ap-south-1"
 }
 
 variable "instance_type" {
-  description = "EC2 instance type (free tier safe)"
-  type        = string
-  default     = "m7i-flex.large"
+  default = "m7i-flex.large"
+}
+
+variable "ami_id" {
+  default = "ami-0f5ee92e2d63afc18"
 }
 
 variable "key_name" {
-  description = "EC2 key pair name"
-  type        = string
+  default = "devops-key"
 }
