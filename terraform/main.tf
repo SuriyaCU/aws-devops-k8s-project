@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_key_pair" "key" {
   key_name   = var.key_name
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("C:/Users/suriy/.ssh/id_rsa.pub")
 }
 
 resource "aws_security_group" "sg" {
